@@ -1,5 +1,5 @@
 all: *.tex
-	pdflatex main.tex
+	latexmk -pdf main.tex
 
 clean:
-	rm *.pdf *.aux *.log
+	latexmk -C
