@@ -1,11 +1,12 @@
+\section{XML Encryption}
 This information is taken from~\cite{w3c_xml_encryption}
-\section{Usages}
+\subsection{Usages}
 An important feature of XML Encryption is that it can be used directly in XML\@.
 Which makes it possible to encrypt just some elements or some content of
 elements instead of the full XML file. Encrypting arbitrary data is also
 supported however.
-\section{EncryptedData}
-\section{Examples}
+\subsection{EncryptedData}
+\subsection{Examples}
 \begin{minted}{xml}
   <?xml version='1.0'?>
   <PaymentInfo xmlns='http://example.org/paymentv2'>
@@ -17,8 +18,8 @@ supported however.
     </CreditCard>
   </PaymentInfo>
 \end{minted}
-\section{Encryption Algorithms}
-\subsection{Symmetric}
+\subsection{Encryption Algorithms}
+\subsubsection{Symmetric}
 \begin{minted}{xml}
     <EncryptedData xmlns='http://www.w3.org/2001/04/xmlenc#'
         Type='http://www.w3.org/2001/04/xmlenc#Element'/>
@@ -49,7 +50,7 @@ supported however.
     \caption{Explanation}
 \end{table}
 
-\subsection{Asymmetric}
+\subsubsection{Asymmetric}
 Asymmetric encryption (or public key cryptography) uses two keys instead of one
 
 \begin{enumerate}
