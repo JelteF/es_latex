@@ -18,6 +18,36 @@ supported however.
 \end{minted}
 \section{Encryption Algorithms}
 \subsection{Symmetric}
+\begin{minted}{xml}
+    <EncryptedData xmlns='http://www.w3.org/2001/04/xmlenc#'
+        Type='http://www.w3.org/2001/04/xmlenc#Element'/>
+  [s2]   <EncryptionMethod
+          Algorithm='http://www.w3.org/2001/04/xmlenc#tripledes-cbc'/>
+         <ds:KeyInfo xmlns:ds='http://www.w3.org/2000/09/xmldsig#'>
+  [s4]     <ds:KeyName>John Smith</ds:KeyName>
+         </ds:KeyInfo>
+  [s6]   <CipherData><CipherValue>DEADBEEF</CipherValue></CipherData>
+       </EncryptedData>
+\end{minted}
+
+\begin{table}
+    \begin{tabulary}{\textwidth}{cL}
+        \toprule
+        Label & Explanation \\
+        \midrule
+        s2 & This (3DES CBC) is a symmetric key cipher. \\
+
+        s4 & The symmetric key has an associated name “John Smith”. \\
+
+        s6 & CipherData contains a CipherValue, which is a base64 encoded octet
+        sequence. Alternately, it could contain a CipherReference, which is a
+        URI reference along with transforms necessary to obtain the encrypted
+        data as an octet sequence. \\
+        \bottomrule
+    \end{tabulary}
+    \caption{Explanation}
+\end{table}
+
 \subsection{Asymmetric}
 Asymmetric encryption (or public key cryptography) uses two keys instead of one
 
