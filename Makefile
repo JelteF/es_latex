@@ -1,5 +1,5 @@
 all: *.tex
-	latexmk -pdf main.tex -shell-escape
+	latexmk -bibtex -pdf main.tex -shell-escape
 
 clean:
-	latexmk -C
+	latexmk -bibtex -C
