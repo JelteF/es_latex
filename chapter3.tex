@@ -13,15 +13,15 @@
 Maven’s primary goal is to allow a developer to comprehend the complete state of a development effort in the shortest period of time. In order to attain this goal there are several areas of concern that Maven attempts to deal with: 
 
 \begin{enumerate}
-\item Making the build process easy: provides a lot of shielding from the details.
+\item \textit{Making the build process easy:} provides a lot of shielding from the details.
 
-\item Providing a uniform build system: allows a project to build using its project object model (POM) and a set of plugins that are shared by all projects using Maven.
+\item \textit{Providing a uniform build system:} allows a project to build using its project object model (POM) and a set of plugins that are shared by all projects using Maven.
 
-\item Providing quality project information: provides plenty of useful project information that is in part taken from your POM and in part generated from your project’s sources (change log,dependency list, unit test)
+\item \textit{Providing quality project information:} provides plenty of useful project information that is in part taken from your POM and in part generated from your project’s sources (change log,dependency list, unit test).
 
-\item Providing guidelines for best practices development: specification, execution, and reporting of unit tests are part of the normal build cycle using Maven.
+\item \textit{Providing guidelines for best practices development:} specification, execution, and reporting of unit tests are part of the normal build cycle using Maven.
 
-\item Allowing transparent migration to new features: provides an easy way for Maven clients to update their installations so that they can take advantage of any changes that been made to Maven itself.
+\item \textit{Allowing transparent migration to new features:} provides an easy way for Maven clients to update their installations so that they can take advantage of any changes that been made to Maven itself.
 
 \end{enumerate}
 
@@ -29,7 +29,7 @@ Maven’s primary goal is to allow a developer to comprehend the complete state 
 
 \begin{itemize}
 
-\item An XML file describes the software project being built, its dependencies on other external modules and components, the build order, directories, and required plug-ins. 
+\item An XML file describes the software project being built, its dependencies on other external modules and components, the build order, directories, and required plug-ins.Please see image \ref{fig:maven}in order to understand the relationship between the components. 
 
 \item It comes with pre-defined targets for performing certain well-defined tasks such as compilation of code and its packaging. 
 
@@ -37,12 +37,22 @@ Maven’s primary goal is to allow a developer to comprehend the complete state 
 
 \end{itemize}
 
+
+
+\begin{figure}[h]
+    \center{}
+    \includegraphics[width=1\textwidth]{maven}
+    \caption{Maven Working Flow
+    \protect\footnotemark}\label{fig:maven}
+\end{figure}
+\footnotetext{\url{http://www.slideshare.net/boyw165/note-apache-maven-intro-36821953}}
+
 \subsection{Some Features}
 
 The following are the key features of Maven in a nutshell: 
 
 \begin{itemize}
-\item Superior dependency management including automatic updating, dependency closures (also known as transitive dependencies)
+\item Superior dependency management including automatic updating, dependency closures (also known as transitive dependencies).
 
 \item Able to easily work with multiple projects at the same time.
 
@@ -68,10 +78,29 @@ Please see \textbf{differences} in table \ref{table:differences}
         \midrule
   \textbf{Design} & Uses conventions for the build procedure, and only exceptions need to be written down & All aspects need to be specified \\
         \midrule
-  \textbf{languages Supported} & Can also be used to build and manage projects written in C\#, Ruby, Scala, and other languages&Only used for Java applications \\ 
+  \textbf{Languages Supported} & Can also be used to build and manage projects written in C\#, Ruby, Scala, and other languages&Only used for Java applications \\ 
     \bottomrule
     \end{tabulary}
     \caption{Differences}\label{table:differences}
+\end{table}
+
+
+
+Please see \textbf{similarities} in table \ref{table:similarities}
+
+\begin{table}[h]
+    \begin{tabulary}{\textwidth}{cL}
+        \toprule
+  \textbf{Aspect} & \textbf{Description} \\
+        \midrule
+  \textbf{Usage } & Tools that help the developer automate different aspects of a project \\
+        \midrule
+  \textbf{Technology} & XML Based  \\
+        \midrule
+  \textbf{Language Support} & Java support \\
+    \bottomrule
+    \end{tabulary}
+    \caption{Similarities}\label{table:similarities}
 \end{table}
 
 Sources taken from~\autocites{wiki_maven}{apacheorg_maven}
