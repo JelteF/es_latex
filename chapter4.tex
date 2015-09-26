@@ -1,2 +1,73 @@
 \section{Regular Expressions: Backreferences}
 
+Most RegEx engines support the notion of backreferences. A backreference is a
+way to reuse a string that matched a previous part of the regular expression.
+This can be useful when the same string needs to occur multiple times in your
+regex, for instance when matching opening and closing HTML tags.
+
+\subsection{Capturing groups}
+
+The way backreferencing works is by using one or more capturing groups.
+A capturing group is a sub part of the whole regex that is wrapped in
+parenthesis. Whatever is matched by a capturing group can later in the regex be
+referenced by using something like \verb|\1|. The one in the previous example
+indicates which capturing group is being referenced. The number of a capturing
+group can easily be retrieved by counting the amount of opening parenthesis
+that came before the start of the group and adding one.
+
+The simple example of a regex with a backrefence is this:
+
+\begin{minted}{xml}
+(abcd)e*\1
+\end{minted}
+
+This regex will for instance match \verb|abcdeeeeabcd| and is effectively the same
+as \verb|abcde*abcd|. However, this is not an example where the power of
+backreferences is realy shown, because it can be rewritten to a version
+without backreferences. All it does here is add some syntactic sugar, but
+backreferencing can do much more. A much better example of its power is this:
+\begin{minted}{xml}
+(a*)b\1
+\end{minted}
+Although it seems simpler, it really is not. It wil only match strings where
+the number of a's on both sides of the b is the same. This can not be rewritten
+without the use of backreferences. The reason for this is that pure regexes
+have no ability to count a number of occurences.
+
+
+\subsection{Overwriting backreferences}
+One thing that is important to know, when using backrefs, is that a backref get
+overwritten whenever the capturing group is matched again. This can be very
+useful in some cases. A good example of the possibilities this creates is this
+regex:
+\begin{minted}{xml}
+(([abc])\2)*
+\end{minted}
+
+This regex will match any string that is a mix of double a's, b's or c's, such
+as \verb|aabbccccaabb|.
+
+
+
+\subsection{Groups Beyond \textbackslash{}10 getting referenced}
+
+As we know the general case is to have until 9 back references, in principle
+this \textbackslash{}10 would look ambiguous because that could refer either to Group 10, or to Group 1 followed by a zero.
+
+In fact, the meaning depends on the regex engine.**
+
+For that reason it is very important to look at the documentation of the tool being used, in order to know how many back references are supported and how they are actually used.
+
+To avoid this kind of ambiguity, here is the proper syntax to create a back-reference to Group 10 in some languages.
+
+\begin{itemize}
+    \item C\#, Ruby: \verb|\k<10>|
+    \item PCRE, Perl: \verb|\g{10}|
+    \item Java, JavaScript, Python: no special syntax (use \verb|\10| ---
+        knowing that if Group 10 is not set Java will treat this as Group 1 then
+        a literal 0, while JavaScript will treat it as the elusive ``backspace
+        character'')
+\end{itemize}
+
+Sources taken from~\autocites{rexegg}{regex}.
+
